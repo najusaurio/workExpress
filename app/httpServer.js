@@ -1,8 +1,8 @@
-var Neon            = require('neon'),
-	Handler         = require('./lib/handler'),
-    express         = require('express');
+var Neon	= require('neon'),
+	handler	= require('./lib/handler'),
+	express	= require('express');
 
-var Control     = [];
+var Control 	= [];
 Control.home    = require('./website/controllers/home');
 Control.article = require('./website/controllers/article');
 
