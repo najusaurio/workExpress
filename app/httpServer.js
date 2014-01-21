@@ -1,7 +1,10 @@
-// dependencies
-var Neon    = require('neon'),
-	Handler = require('./core/handler')
-    express = require('express');
+var Neon            = require('neon'),
+	Handler         = require('./lib/handler'),
+    express         = require('express');
+
+var Control     = [];
+Control.home    = require('./website/controllers/home');
+Control.article = require('./website/controllers/article');
 
 var ExpressServer = Neon.Class()({
 	prototype : {
@@ -11,14 +14,10 @@ var ExpressServer = Neon.Class()({
 			this.httpServer = express();
 			// configure express
 			this.httpServer.use(express.favicon(__dirname + ("/static/favicon.ico")));
-			// controller
-			this.httpServer.use(function(req, res, next){
-				var DataURL    = new Handler(req.url).exit;
-				var Controller = require('./' + DataURL[0] + '/controllers/' + DataURL[1]);
-				var controller = new Controller(DataURL[2], req, DataURL[3]);
-				var exit       = controller.exit
-				res.send(exit);
-			});
+		    // Add a basic route – index page
+		    this.httpServer.get('/', function (req, res) {
+		        res.send('Hello world!!!');
+		    });
 		}
 	}
 });
