@@ -15,9 +15,9 @@ var ExpressServer = Neon.Class()({
 			// configure express
 			this.httpServer.use(express.favicon(__dirname + ("/static/favicon.ico")));
 		    // Add a basic route – index page
-		    this.httpServer.get('/', function (req, res) {
-		        res.send('Hello world!!!');
-		    });
+			this.httpServer.get('/', function (req, res) {
+				res.send('Hello world!!!');
+			});
 		}
 	}
 });
