@@ -1,5 +1,5 @@
-var Article = function(config){
-	config = config || {};
+var Article = function(resource, req, res, next){
+	this.response = this[resource](req, res, next);
 }
 
 Article.prototype.post_save = function(req, res, next){

@@ -2,13 +2,13 @@ var Master = function(config){
 	config       = config || {};
 	this.cluster = config.cluster;
 }
-
-Master.prototype.createWorker = function(){ // create a worker
+// create a worker
+Master.prototype.createWorker = function(){
 	var worker = this.cluster.fork();
 	console.log('worker ' + worker.id + ' started');
 }
-
-Master.prototype.onWorkerExit = function(worker){ // when worker dies
+// when worker dies
+Master.prototype.onWorkerExit = function(worker){
 	console.log('worker ' + worker.id + ' died');
 	var master = this;
 	// recreate the worker after 500 milliseconds
@@ -16,5 +16,5 @@ Master.prototype.onWorkerExit = function(worker){ // when worker dies
 		master.createWorker();
 	}, 500);
 }
-
+// export module
 module.exports = Master;
