@@ -17,8 +17,8 @@ if (cluster.isMaster) {
 // code to run if we're in a worker process
 } else {
     // start worker
-    var Worker = require('./worker');
-    var worker = new Worker();
-    worker.run();
+    var Workers = require('./workers');
+    var workers = new Workers();
+    workers.run();
     console.log('Worker ' + cluster.worker.id + ' running!');
 }
