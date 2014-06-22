@@ -6,16 +6,22 @@
     </head>
     <body>
         {% block transformer-template %}{% endblock %}
+        <p>[[ docs ]]</p>
         <script>
             // angular initial model
             var modelApp = {};
             // config all class.angular to start angular
             $('.angular').each(function(){
+                // variables
                 var model       = $(this).attr('model');
                 var index       = $(this).attr('index');
                 var content     = $(this).html();
+                // config angular modelApp
                 modelApp[index] = content;
+                // config angular databinding
                 $(this).html( '{{' + model +'.'+ index + '}}' );
+                // remove unnecessary elements
+                $(this).removeClass('angular');
                 $(this).removeAttr('model');
                 $(this).removeAttr('index');
             });
