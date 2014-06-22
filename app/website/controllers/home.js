@@ -3,12 +3,11 @@ var HomeView  = require('../views/home');
 var HomeModel = require('../models/home');
 // module
 var Home = function(conf){
-    var self      = this;
     this.conf     = conf || {};
     this.view     = new HomeView();
     this.model    = new HomeModel();
     this.response = function(){
-        this[self.conf.resource](self.conf.req,self.conf.res,self.conf.next);
+        this[this.conf.resource](this.conf.req,this.conf.res,this.conf.next);
     };
 };
 // resource
