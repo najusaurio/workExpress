@@ -5,24 +5,25 @@
         <script src='/public/js/vendor/jquery-1.11.1.min.js'></script>
     </head>
     <body>
-        {% block server-template %}{% endblock %}
-        {% block angular-template %}{% endblock %}
+        {% block transformer-template %}{% endblock %}
         <script>
-            var model = {};
-
-            $('.model').each(function(){
-                var index    = $(this).attr('name');
-                var content  = $(this).html();
-                model[index] = content;
+            // angular initial model
+            var modelApp = {};
+            // config all class.angular to start angular
+            $('.angular').each(function(){
+                var model       = $(this).attr('model');
+                var index       = $(this).attr('index');
+                var content     = $(this).html();
+                modelApp[index] = content;
+                $(this).html( '{{' + model +'.'+ index + '}}' );
+                $(this).removeAttr('model');
+                $(this).removeAttr('index');
             });
-
-            $('#phantom-template').show();
-            $('#server-template').remove();
-
+            // angular app
             var thisApp = angular.module('expressApp', []);
-
+            // angular controller
             thisApp.controller('expressCtrl', function($scope){
-                $scope.model = model; 
+                $scope.modelApp = modelApp; 
             })
         </script>
     </body>

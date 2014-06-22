@@ -1,10 +1,11 @@
+// dependencies
 var env       = process.env.NODE_ENV || 'development',
     path      = require('path'),
     express   = require('express'),
     swig      = require('swig'),
     toobusy   = require('toobusy'),
     bundles   = require('./website/bundles');
-// config express
+// module
 var ExpressServer = function(config){
     config = config || {};
     // create a new express application

@@ -1,15 +1,8 @@
 {% extends 'base.html' %}
 
-{% block server-template %}
-<div id='server-template'>
-    <p class='model' name='pagename'>[[ pagename|title ]]</p>
-    <p class='model' name='userName'>[[ userName ]]</p>
-</div>
-{% endblock %}
-
-{% block angular-template %}
-<div id='phantom-template' ng-controller='expressCtrl' style='display:none;'>
-    <p>{{ model.pagename }}</p>
-    <p>{{ model.userName }}</p>
+{% block transformer-template  %}
+<div id='phantom-template' ng-controller='expressCtrl'>
+    <p class='angular' model='modelApp' index='pagename'>[[ pagename ]]</p>
+    <p class='angular' model='modelApp' index='userName'>[[ userName ]]</p>
 </div>
 {% endblock %}
