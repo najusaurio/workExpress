@@ -47,9 +47,10 @@ ExpressServer.prototype.routers = function(resource, url){
         // variables
         var controller = (req.url == '/') ? 'home' : req.url.split('/')[1];
         var resource   = (req.url == '/') ? 'get_see' : req.method.toLowerCase() + '_' + req.url.split('/')[2];
+        var conf       = {'resource':resource,'req':req,'res':res,'next':next};
         // controler
-        var Controller = new bundles[controller](resource, req, res, next);
-        Controller.response;
+        var Controller = new bundles[controller](conf);
+        Controller.response();
     });
 };
 // export module

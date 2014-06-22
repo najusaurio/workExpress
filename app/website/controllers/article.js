@@ -1,6 +1,10 @@
 
-var Article = function(resource, req, res, next){
-    this.response = this[resource](req, res, next);
+var Article = function(conf){
+    var self      = this;
+    this.conf     = conf || {};
+    this.response = function(){
+        this[self.conf.resource](self.conf.req, self.conf.res, self.conf.next);
+    };
 };
 
 Article.prototype.post_save = function(req, res, next){
