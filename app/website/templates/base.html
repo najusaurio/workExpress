@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app='expressApp'>
+    <head>
+        <script src='/public/js/vendor/angular.min.js'></script>
+        <script src='/public/js/vendor/jquery-1.11.1.min.js'></script>
+    </head>
+    <body>
+        {% block server-template %}{% endblock %}
+        <div id='phantom-template' ng-controller='expressCtrl' style='display:none;'>
+            <p>{{ model.pagename }}</p>
+            <p>{{ model.userName }}</p>
+        </div>
+        <script>
+            var model = {};
+
+            $('.model').each(function(index){
+                var index    = $(this).attr('name');
+                var content  = $(this).html();
+                model[index] = content;
+            });
+
+            $('#phantom-template').show();
+            $('#server-template').remove();
+
+            var thisApp = angular.module('expressApp', []);
+
+            thisApp.controller('expressCtrl', function($scope){
+                $scope.model = model; 
+            })
+        </script>
+    </body>
+</html>
