@@ -22,8 +22,8 @@
                 model[index] = content;
             });
 
-            $('#server-template').hide();
             $('#phantom-template').show();
+            $('#server-template').remove();
 
             var thisApp = angular.module('expressApp', []);
 
