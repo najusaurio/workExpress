@@ -12,18 +12,18 @@ var Workers = function(config){
     mongoose.connect('mongodb://'+conf.db.host+'/' + conf.db.name );
     // create a new server application based on express
     this.app    = new expressServer();
-    // this.server = http.createServer(this.app.expressServer);
+    this.server = http.createServer(this.app.expressServer);
     // spdy
-    var options = {
-        key: fs.readFileSync(__dirname + '/keys/spdy-key.pem'),
-        cert: fs.readFileSync(__dirname + '/keys/spdy-cert.pem'),
-        // ca: fs.readFileSync(__dirname + '/keys/spdy-ca.pem'),
-        // **optional** SPDY-specific options
-        windowSize: 1024 * 1024, // Server's window size
-        // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy
-        autoSpdy31: false
-    };
-    this.server = spdy.createServer(options, this.app.expressServer);
+    // var options = {
+    //     key: fs.readFileSync(__dirname + '/keys/spdy-key.pem'),
+    //     cert: fs.readFileSync(__dirname + '/keys/spdy-cert.pem'),
+    //     // ca: fs.readFileSync(__dirname + '/keys/spdy-ca.pem'),
+    //     // **optional** SPDY-specific options
+    //     windowSize: 1024 * 1024, // Server's window size
+    //     // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy
+    //     autoSpdy31: false
+    // };
+    // this.server = spdy.createServer(options, this.app.expressServer);
 };
 // run worker
 Workers.prototype.run = function(){

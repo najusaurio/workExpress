@@ -7,7 +7,7 @@ var Home = function(resource, req, res, next){
 };
 
 Home.prototype.get_see = function(req, res, next){
-    object = { pagename: 'Swig is fun!' };
+    object = { pagename: 'Home' , userName: 'DiegoUG'};
     this.view.see(res, object);
 };
 

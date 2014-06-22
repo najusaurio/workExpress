@@ -1,7 +1,35 @@
 <!doctype html>
-<html>
-	<head></head>
-	<body>
-		<h1>{{ pagename|title }}</h1>
-	</body>
+<html ng-app='expressApp'>
+    <head>
+        <script src='/public/js/vendor/angular.min.js'></script>
+        <script src='/public/js/vendor/jquery-1.11.1.min.js'></script>
+    </head>
+    <body>
+        <div id='server-template'>
+            <p class='model' name='pagename'>[[ pagename|title ]]</p>
+            <p class='model' name='userName'>[[ userName ]]</p>
+        </div>
+        <div id='phantom-template' ng-controller='expressCtrl' style='display:none;'>
+            <p>{{ model.pagename }}</p>
+            <p>{{ model.userName }}</p>
+        </div>
+        <script>
+            var model = {};
+
+            $('.model').each(function(index){
+                var index    = $(this).attr('name');
+                var content  = $(this).html();
+                model[index] = content;
+            });
+
+            $('#server-template').hide();
+            $('#phantom-template').show();
+
+            var thisApp = angular.module('expressApp', []);
+
+            thisApp.controller('expressCtrl', function($scope){
+                $scope.model = model; 
+            })
+        </script>
+    </body>
 </html>
