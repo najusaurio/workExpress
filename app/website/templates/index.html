@@ -6,3 +6,10 @@
     <p class='model' name='userName'>[[ userName ]]</p>
 </div>
 {% endblock %}
+
+{% block angular-template %}
+<div id='phantom-template' ng-controller='expressCtrl' style='display:none;'>
+    <p>{{ model.pagename }}</p>
+    <p>{{ model.userName }}</p>
+</div>
+{% endblock %}

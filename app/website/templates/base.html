@@ -6,10 +6,7 @@
     </head>
     <body>
         {% block server-template %}{% endblock %}
-        <div id='phantom-template' ng-controller='expressCtrl' style='display:none;'>
-            <p>{{ model.pagename }}</p>
-            <p>{{ model.userName }}</p>
-        </div>
+        {% block angular-template %}{% endblock %}
         <script>
             var model = {};
 
