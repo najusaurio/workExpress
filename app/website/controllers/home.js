@@ -10,7 +10,6 @@ var Home = function(conf){
     };
 };
 
-
 Home.prototype.get_see = function(req, res, next){
     object = { pagename: 'Home' , userName: 'DiegoUG'};
     this.view.see(res, object);
