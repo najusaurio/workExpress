@@ -11,7 +11,7 @@ var Home = function(conf){
     };
 };
 // resource
-Home.prototype.get_see = function(req, res, next){
+Home.prototype.get_see = function(req,res,next){
     var self = this;
     this.model['get'](function(docs){
         object = { pagename: 'Home' , userName: 'DiegoUG', docs:docs};

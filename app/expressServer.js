@@ -17,7 +17,7 @@ var ExpressServer = function(config){
         if (toobusy()) res.send(503, "I'm busy right now, sorry.");
         else next();
     });
-    // template engine, default swig
+    // config swig as default template engine
     this.expressServer.engine('html', swig.renderFile);
     this.expressServer.set('view engine', 'html');
     this.expressServer.set('views', __dirname + '/website/templates');
@@ -30,28 +30,28 @@ var ExpressServer = function(config){
     }
     // dinamic router to controllers
     for (var controller in bundles){
-        for (var action in bundles[controller].prototype){
+        for (var resource in bundles[controller].prototype){
             // variables
-            var resource    = action.split('_')[0];
-            var environment = action.split('_')[1];
-            var data = (resource == 'get') ? ':data' : '';
+            var method      = resource.split('_')[0];
+            var environment = resource.split('_')[1];
+            var data = (method == 'get') ? ':data' : '';
             var url  = (controller == 'home') ? '/' : '/' + controller + '/' + environment + '/' + data;
             // constructor of urls
-            this.routers(resource, url);
+            this.routers(controller,resource,method,url);
         }
     }
 };
 // constructor of urls
-ExpressServer.prototype.routers = function(resource, url){
+ExpressServer.prototype.routers = function(controller,resource,method,url){
     console.log(url);
-    this.expressServer[resource](url, function (req, res, next) {
-        // variables
-        var controller = (req.url == '/') ? 'home' : req.url.split('/')[1];
-        var resource   = (req.url == '/') ? 'get_see' : req.method.toLowerCase() + '_' + req.url.split('/')[2];
-        var conf       = {'resource':resource,'req':req,'res':res,'next':next};
-        // controler
-        var Controller = new bundles[controller](conf);
-        Controller.response();
+    this.expressServer[method](url, function (req,res,next){
+        // encapsulate closure
+        (function(controller, resource){
+            // controler
+            var conf = {'resource':resource,'req':req,'res':res,'next':next};
+            var Controller = new bundles[controller](conf);
+            Controller.response();
+        })(controller, resource);
     });
 };
 // export module
