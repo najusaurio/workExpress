@@ -9,7 +9,7 @@ var conf          = require('./conf'),
 var Workers = function(config){
     config = config || {};
     // conect to database
-    mongoose.connect('mongodb://'+conf.db.host+'/' + conf.db.name );
+    mongoose.connect('mongodb://' + conf.mongoDB.host + '/' + conf.mongoDB.name);
     // create a new server application based on express
     this.app    = new expressServer();
     this.server = http.createServer(this.app.expressServer);
@@ -27,8 +27,8 @@ var Workers = function(config){
 };
 // run worker
 Workers.prototype.run = function(){
-    // bind server a port
-    this.server.listen(conf.port);
+    // bind server a server port
+    this.server.listen(conf.serverPort);
 };
 // export module
 module.exports = Workers;

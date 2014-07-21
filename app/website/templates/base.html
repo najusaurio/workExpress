@@ -1,11 +1,12 @@
 <!doctype html>
-<html ng-app='expressApp'>
+<html ng-app='mvcApp'>
     <head>
         <script src='/public/js/vendor/angular.min.js'></script>
         <script src='/public/js/vendor/jquery-1.11.1.min.js'></script>
     </head>
     <body>
-        {% block transformer-template %}{% endblock %}
+        {% block server-template %}{% endblock %}
+        {% block angular-template %}{% endblock %}
         <p>[[ docs ]]</p>
         <script>
             // angular initial model
@@ -18,17 +19,15 @@
                 var content     = $(this).html();
                 // config angular modelApp
                 modelApp[index] = content;
-                // config angular databinding
-                $(this).html( '{{' + model +'.'+ index + '}}' );
-                // remove unnecessary elements
-                $(this).removeClass('angular');
-                $(this).removeAttr('model');
-                $(this).removeAttr('index');
             });
+            // switch templates
+            var tempSwitch = $('#server-template').attr('class');
+            $('#angular-template.' + tempSwitch).show();
+            $('#server-template').remove();
             // angular app
-            var thisApp = angular.module('expressApp', []);
+            var thisApp = angular.module('mvcApp', []);
             // angular controller
-            thisApp.controller('expressCtrl', function($scope){
+            thisApp.controller('mvcCtrl', function($scope){
                 $scope.modelApp = modelApp; 
             })
         </script>

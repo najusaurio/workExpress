@@ -4,7 +4,7 @@ var env       = process.env.NODE_ENV || 'development',
     express   = require('express'),
     swig      = require('swig'),
     toobusy   = require('toobusy'),
-    bundles   = require('./website/bundles');
+    routher   = require('./website/routher');
 // module
 var ExpressServer = function(config){
     config = config || {};
@@ -29,13 +29,15 @@ var ExpressServer = function(config){
         swig.setDefaults({ cache: false, varControls: ['[[', ']]'] });
     }
     // dinamic router to controllers
-    for (var controller in bundles){
-        for (var resource in bundles[controller].prototype){
+    for (var controller in routher){
+        for (var resource in routher[controller].prototype){
             // variables
             var method      = resource.split('_')[0];
             var environment = resource.split('_')[1];
-            var data = (method == 'get') ? ':data' : '';
-            var url  = (controller == 'home') ? '/' : '/' + controller + '/' + environment + '/' + data;
+            var data = resource.split('_')[2];
+            data     = (method == 'get' && data !== undefined) ? ':data' : '';
+            var url  = ((controller == 'home' && environment == 'see') ? '/' :
+                        '/' + controller + '/' + environment + '/' + data);
             // constructor of urls
             this.routers(controller,resource,method,url);
         }
@@ -45,13 +47,17 @@ var ExpressServer = function(config){
 ExpressServer.prototype.routers = function(controller,resource,method,url){
     console.log(url);
     this.expressServer[method](url, function (req,res,next){
-        // encapsulate closure
+        // encapsulate closure and run controller
         (function(controller, resource){
-            // controler
-            var conf = {'resource':resource,'req':req,'res':res,'next':next};
-            var Controller = new bundles[controller](conf);
+            var conf = {
+                'resource':resource,
+                'req':req,
+                'res':res,
+                'next':next
+            };
+            var Controller = new routher[controller](conf);
             Controller.response();
-        })(controller, resource);
+        })(controller,resource);
     });
 };
 // export module
