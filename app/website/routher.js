@@ -1,4 +1,4 @@
 module.exports = {
-	article : require('./controllers/article'),
-	home    : require('./controllers/home'),
+    article : require('./controllers/article'),
+    home    : require('./controllers/home'),
 };

@@ -1,19 +1,20 @@
 // dependencies
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    Schema   = mongoose.Schema;
 // shema
 var articleSchema = new mongoose.Schema({
+    active      : { type: Boolean, default: false },
     title       : { type: String, required: true},
     slug        : { type: String, required: true},
-    tags        : String,
-    description : String,
     content     : String,
+    description : String,
     imageURL    : String,
-    state       : { type: Boolean, default: false },
+    tags        : String,
     published   : Date,
     created     : { type: Date, 'default': Date.now },
     author      : { type: Schema.ObjectId, ref:'User' },
-    hits        : Number
-    // record: something like git
+    hits        : Number,
+    record      : { type: Schema.ObjectId, ref:'ArticleChange' },
 });
 // shema validation
 articleSchema.path('title').validate(function(val){
