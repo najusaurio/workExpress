@@ -1,15 +1,8 @@
 {% extends 'base.html' %}
 
-{% block server-template %}
-<div id='server-template' class='home_see'>
-    <p class='angular' model='modelApp' index='pagename'>[[ pagename|title ]]</p>
-    <p class='angular' model='modelApp' index='userName'>[[ userName ]]</p>
-</div>
-{% endblock %}
-
-{% block angular-template %}
-<div id='angular-template' class='home_see' ng-controller='mvcCtrl' style='display:none;'>
-    <p>{{ modelApp.pagename }}</p>
-    <p>{{ modelApp.userName }}</p>
+{% block content %}
+<div>
+    <p>[[ pagename|title ]]</p>
+    <p>[[ userName ]]</p>
 </div>
 {% endblock %}

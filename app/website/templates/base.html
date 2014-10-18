@@ -1,35 +1,10 @@
 <!doctype html>
-<html ng-app='mvcApp'>
+<html>
     <head>
-        <script src='/public/js/vendor/angular.min.js'></script>
         <script src='/public/js/vendor/jquery-1.11.1.min.js'></script>
     </head>
     <body>
-        {% block server-template %}{% endblock %}
-        {% block angular-template %}{% endblock %}
+        {% block content %}{% endblock %}
         <p>[[ docs ]]</p>
-        <script>
-            // angular initial model
-            var modelApp = {};
-            // config all class.angular to start angular
-            $('.angular').each(function(){
-                // variables
-                var model       = $(this).attr('model');
-                var index       = $(this).attr('index');
-                var content     = $(this).html();
-                // config angular modelApp
-                modelApp[index] = content;
-            });
-            // switch templates
-            var tempSwitch = $('#server-template').attr('class');
-            $('#angular-template.' + tempSwitch).show();
-            $('#server-template').remove();
-            // angular app
-            var thisApp = angular.module('mvcApp', []);
-            // angular controller
-            thisApp.controller('mvcCtrl', function($scope){
-                $scope.modelApp = modelApp; 
-            })
-        </script>
     </body>
 </html>
