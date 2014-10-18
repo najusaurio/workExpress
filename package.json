@@ -2,10 +2,11 @@
   "name": "puls3-node-server",
   "version": "0.0.1",
   "dependencies": {
-    "express": "3.4.7",
-    "mongoose": "3.8.3",
-    "spdy": "1.26.5",
-    "swig": "1.3.2",
+    "express": "4.9.8",
+    "mongoose": "3.8.17",
+    "serve-favicon": "^2.1.6",
+    "spdy": "1.29.1",
+    "swig": "1.4.2",
     "toobusy": "0.2.4"
   }
 }
