@@ -6,6 +6,7 @@ var env       = process.env.NODE_ENV || 'development',
     swig      = require('swig'),
     toobusy   = require('toobusy'),
     routher   = require('./website/routher');
+    middlewares = require('./middlewares/admin'),
 // module
 var ExpressServer = function(config){
     config = config || {};
@@ -14,10 +15,9 @@ var ExpressServer = function(config){
     // middleware's
     this.expressServer.use(favicon(__dirname + ('/static/favicon.ico')));
     this.expressServer.use(express.static(path.join(__dirname, '/static/')));
-    this.expressServer.use(function(req, res, next) { // impossible load
-        if (toobusy()) res.send(503, "I'm busy right now, sorry.");
-        else next();
-    });
+    for (var middleware in middlewares){
+        this.expressServer.use(middlewares[middleware]);
+    }
     // config swig as default template engine
     this.expressServer.engine('html', swig.renderFile);
     this.expressServer.set('view engine', 'html');
