@@ -2,6 +2,7 @@
 var env       = process.env.NODE_ENV || 'development',
     path      = require('path'),
     express   = require('express'),
+    favicon   = require('serve-favicon'),
     swig      = require('swig'),
     toobusy   = require('toobusy'),
     routher   = require('./website/routher');
@@ -11,7 +12,7 @@ var ExpressServer = function(config){
     // create a new express application
     this.expressServer = express();
     // middleware's
-    this.expressServer.use(express.favicon(__dirname + ('/static/favicon.ico')));
+    this.expressServer.use(favicon(__dirname + ('/static/favicon.ico')));
     this.expressServer.use(express.static(path.join(__dirname, '/static/')));
     this.expressServer.use(function(req, res, next) { // impossible load
         if (toobusy()) res.send(503, "I'm busy right now, sorry.");
