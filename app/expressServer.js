@@ -6,6 +6,7 @@ var env       = process.env.NODE_ENV || 'development',
     swig      = require('swig'),
     toobusy   = require('toobusy'),
     routher   = require('./website/routher');
+    bodyParser  = require('body-parser'),
     middlewares = require('./middlewares/admin'),
 // module
 var ExpressServer = function(config){
@@ -13,6 +14,7 @@ var ExpressServer = function(config){
     // create a new express application
     this.expressServer = express();
     // middleware's
+    this.expressServer.use(bodyParser.urlencoded({ extended: true })); // POST: req.body
     this.expressServer.use(favicon(__dirname + ('/static/favicon.ico')));
     this.expressServer.use(express.static(path.join(__dirname, '/static/')));
     for (var middleware in middlewares){
