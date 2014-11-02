@@ -1,12 +1,10 @@
 // dependencies
-var env         = process.env.NODE_ENV || 'development',
-    path        = require('path'),
-    express     = require('express'),
-    swig        = require('swig'),
-    favicon     = require('serve-favicon'),
-    bodyParser  = require('body-parser'),
-    middlewares = require('./middlewares/admin'),
-    routher     = require('./website/routher');
+var env          = process.env.NODE_ENV || 'production',
+    express      = require('express'),
+    conf         = require('../conf'),
+    swig         = require('swig'),
+    middlewares  = require('./middlewares/admin'),
+    router       = require('./website/router');
 // module
 var ExpressServer = function(config){
     config = config || {};
