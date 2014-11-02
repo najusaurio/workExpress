@@ -1,9 +1,11 @@
 // dependencies
-//var modelHome = require('../../plugins/menu/model/menu');
+var modelHome = require('./schema/menu');
+var mongoose = require('mongoose');
+var ObjectId = mongoose.Types.ObjectId;
 // module
 var Home = function(config){
     config = config || {};
-    //this.model = modelHome;
+    this.model = modelHome;
 };
 // save data
 Home.prototype.save = function(query,data,callback){
@@ -13,7 +15,7 @@ Home.prototype.save = function(query,data,callback){
 };
 // get data
 Home.prototype.get = function(callback){
-    this.model.find({name:'Home'}).exec(function(err,res){
+    this.model.find({name:'Home'}).populate('item.page').exec(function(err,res){
         callback(res);
     });
 };
