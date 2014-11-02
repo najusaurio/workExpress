@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 // shema
 var user = new Schema({
-    userName  : { type: String, required: true},
+    username  : { type: String, required: true},
     password  : String,
     firstName : String,
     lastName  : String,
