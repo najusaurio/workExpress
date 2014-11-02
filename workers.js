@@ -8,7 +8,7 @@ var conf          = require('./conf'),
     redisStore    = new RedisStore({ client: redisClient }),
     fs            = require('fs'),
     http          = require('http'),
-    expressServer = require('./app/expressServer');
+    expressServer = require('./app/expressServer'),
     socketIO      = require('./app/socketIO');
 // session
 var sessionMiddleware = session({
@@ -40,7 +40,6 @@ var Workers = function(config){
 };
 // run worker
 Workers.prototype.run = function(){
-    // bind server a server port
     this.server.listen(conf.serverPort);
     this.Io.run();
 };
