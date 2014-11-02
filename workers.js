@@ -21,9 +21,9 @@ var Workers = function(config){
     config = config || {};
     // conect to database
     mongoose.connect('mongodb://' + conf.mongoDB.host + '/' + conf.mongoDB.name);
-    // create a new server application based on express
-    this.app    = new expressServer();
-    this.server = http.createServer(this.app.expressServer);
+    // create server application
+    this.app    = new expressServer({session:sessionMiddleware});
+    this.server = http.Server(this.app.expressServer);
     this.Io     = new socketIO({server:this.server,redisStore:redisStore});
     // spdy https
     // spdy = require('spdy')
