@@ -1,10 +1,21 @@
 // dependencies
 var conf          = require('./conf'),
     mongoose      = require('mongoose'),
+    redis         = require('redis'),
+    session       = require('express-session'),
+    redisClient   = redis.createClient(conf.redis.port,conf.redis.host),
+    RedisStore    = require('connect-redis')(session),
+    redisStore    = new RedisStore({ client: redisClient }),
     fs            = require('fs'),
     spdy          = require('spdy'),
     http          = require('http'),
     expressServer = require('./app/expressServer');
+// session
+var sessionMiddleware = session({
+    store: redisStore,
+    key: conf.secret,
+    secret: conf.secret,
+});
 // config worker
 var Workers = function(config){
     config = config || {};
