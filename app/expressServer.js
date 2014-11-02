@@ -31,8 +31,8 @@ var ExpressServer = function(config){
         swig.setDefaults({ cache: false, varControls: ['[[', ']]'] });
     }
     // dinamic router to controllers
-    for (var controller in routher){
-        for (var resource in routher[controller].prototype){
+    for (var controller in router){
+        for (var resource in router[controller].prototype){
             // variables
             var method      = resource.split('_')[0];
             var environment = resource.split('_')[1];
