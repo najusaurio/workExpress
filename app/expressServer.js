@@ -50,16 +50,14 @@ ExpressServer.prototype.routers = function(controller,resource,method,url){
     console.log(url);
     this.expressServer[method](url, function (req,res,next){
         // encapsulate closure and run controller
-        (function(controller, resource){
-            var conf = {
-                'resource':resource,
-                'req':req,
-                'res':res,
-                'next':next
-            };
-            var Controller = new routher[controller](conf);
-            Controller.response();
-        })(controller,resource);
+        var conf = {
+            'resource':resource,
+            'req':req,
+            'res':res,
+            'next':next
+        };
+        var Controller = new router[controller](conf);
+        Controller.response();
     });
 };
 // export module
