@@ -1,7 +1,12 @@
 {
+    "secret":"workExpress is awesome",
     "serverPort" : 3000,
     "mongoDB" : {
         "name": "mvc",
         "host": "localhost"
+    },
+    "redis": {
+        "host": "127.0.0.1",
+        "port": 6379
     }
 }
