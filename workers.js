@@ -9,6 +9,7 @@ var conf          = require('./conf'),
     fs            = require('fs'),
     http          = require('http'),
     expressServer = require('./app/expressServer');
+    socketIO      = require('./app/socketIO');
 // session
 var sessionMiddleware = session({
     store: redisStore,
@@ -23,6 +24,7 @@ var Workers = function(config){
     // create a new server application based on express
     this.app    = new expressServer();
     this.server = http.createServer(this.app.expressServer);
+    this.Io     = new socketIO({server:this.server,redisStore:redisStore});
     // spdy https
     // spdy = require('spdy')
     // var options = {
