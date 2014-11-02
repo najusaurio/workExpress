@@ -1,4 +1,5 @@
 module.exports = {
+    bodyparser: require('./bodyparser'),
     cookieparser: require('./cookieparser'),
     session: true,
     csurf: require('./csurf'),
@@ -7,6 +8,5 @@ module.exports = {
     locals: require('./locals'),
     toobusy: require('./toobusy'),
     favicon: require('./favicon'),
-    setcookie: require('./setcookie'),
-    bodyparser: require('./bodyparser')
+    setcookie: require('./setcookie')
 };
