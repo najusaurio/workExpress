@@ -21,7 +21,7 @@ var ExpressServer = function(config){
     // config swig as default template engine
     this.expressServer.engine('html', swig.renderFile);
     this.expressServer.set('view engine', 'html');
-    this.expressServer.set('views', __dirname + '/website/templates');
+    this.expressServer.set('views', __dirname + '/website/views/templates');
     swig.setDefaults({ varControls: ['[[', ']]'] });
     // development enviroment
     if (env == 'development') {
