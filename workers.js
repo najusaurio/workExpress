@@ -7,7 +7,6 @@ var conf          = require('./conf'),
     RedisStore    = require('connect-redis')(session),
     redisStore    = new RedisStore({ client: redisClient }),
     fs            = require('fs'),
-    spdy          = require('spdy'),
     http          = require('http'),
     expressServer = require('./app/expressServer');
 // session
@@ -25,6 +24,7 @@ var Workers = function(config){
     this.app    = new expressServer();
     this.server = http.createServer(this.app.expressServer);
     // spdy https
+    // spdy = require('spdy')
     // var options = {
     //     key: fs.readFileSync(__dirname + '/keys/spdy-key.pem'),
     //     cert: fs.readFileSync(__dirname + '/keys/spdy-cert.pem'),
