@@ -1,5 +1,5 @@
 {
-  "name": "puls3-node-server",
+  "name": "workExpress",
   "version": "0.0.1",
   "dependencies": {
     "body-parser": "1.9.0",
