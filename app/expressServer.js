@@ -15,7 +15,11 @@ var ExpressServer = function(config){
     this.expressServer.use(favicon(__dirname + ('/static/favicon.ico')));
     this.expressServer.use(express.static(path.join(__dirname, '/static/')));
     for (var middleware in middlewares){
-        this.expressServer.use(middlewares[middleware]);
+        if (middleware == 'session'){
+            this.expressServer.use(config.session);
+        } else {
+            this.expressServer.use(middlewares[middleware]);
+        }
     }
     // config swig as default template engine
     this.expressServer.engine('html', swig.renderFile);
