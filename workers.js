@@ -42,6 +42,7 @@ var Workers = function(config){
 Workers.prototype.run = function(){
     // bind server a server port
     this.server.listen(conf.serverPort);
+    this.Io.run();
 };
 // export module
 module.exports = Workers;
