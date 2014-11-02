@@ -25,6 +25,7 @@ var ExpressServer = function(config){
     swig.setDefaults({ varControls: ['[[', ']]'] });
     // development enviroment
     if (env == 'development') {
+        console.log('DEVELOPMENT');
         // disable Swig's cache and use Express's caching instead
         this.expressServer.set('view cache', false);
         swig.setDefaults({ cache: false, varControls: ['[[', ']]'] });
