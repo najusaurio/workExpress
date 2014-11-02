@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>[[ menu.menu ]]</h1>
+<div>
+    <p>[[ pagename|title ]]</p>
+    <p>[[ userName ]]</p>
+
+    <a href="/article/add/">add article</a>
+
+    <p>-----------------------------------</p>
+    {% for article in articles %}
+        <a href="/article/see/[[ article.slug ]]">Title: [[ article.title ]]</a>
+        <p>Description: [[ article.description ]]</p>
+        <p>-----------------------------------</p>
+    {% endfor %}
+</div>
+{% endblock %}
