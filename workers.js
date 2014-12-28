@@ -43,8 +43,6 @@ Workers.prototype.run = function(){
     this.server.listen(conf.serverPort);
     this.Io.run();
 };
-// export module
-module.exports = Workers;
 // Been able to run slave as stand alone;
 if(module.parent){
     module.exports = Workers;
