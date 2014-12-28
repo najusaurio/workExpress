@@ -1,5 +1,5 @@
-Setting to work with containers Docker
-======================================
+Configuration to work with Docker
+=================================
 
 For the development environment starts containers in the following order:
 
