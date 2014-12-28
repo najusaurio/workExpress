@@ -1,7 +1,7 @@
 // dependencies
 var env          = process.env.NODE_ENV || 'production',
-    express      = require('express'),
     conf         = require('../conf'),
+    express      = require('express'),
     swig         = require('swig'),
     middlewares  = require('./middlewares/admin'),
     router       = require('./website/router');
