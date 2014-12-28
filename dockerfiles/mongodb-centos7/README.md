@@ -33,7 +33,7 @@ reference the data volume)
 
     $ sudo docker run --name mongodb-data -v /data/db <username>/mongodb true
     
-To run in bagraund:
+To run in background:
 
     $ sudo docker run -d -p 27017:27017 --name mongodb --volumes-from=mongodb-data <username>/mongodb mongod
 

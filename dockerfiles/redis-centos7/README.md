@@ -23,7 +23,7 @@ Check the image out
 Launching Redis
 ---------------
 
-To run in bagraund:
+To run in background:
 
     $ sudo docker run -d -p 6379:6379 --name redis <username>/redis
 

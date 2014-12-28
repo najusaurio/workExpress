@@ -25,7 +25,7 @@ Check the image out.
 Launching NodeJS
 ----------------
 
-To run in bagraund:
+To run in background:
 
     $ sudo docker run -itd -p 8080:8080 -p 8081:8081 -v /opt/workExpress:/opt/workExpress --link mongodb:mongodb --link redis:redis --name wenodejs <username>/nodejs /node_debugger.sh
 
