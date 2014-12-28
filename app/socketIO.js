@@ -19,17 +19,12 @@ SocketIO.prototype.run = function(){
     });
     // when a client connects
     this.io.sockets.on('connection', function(socket){
-        // send to socket events
-        self.connect(socket);
+        // send to events
+        self.events(socket);
     });
 };
 // on connect
-SocketIO.prototype.connect = function(socket){
-    var self = this;
-    socket.emit('news', { hello: 'world' });
-    socket.on('other:event', function(data){
-        console.log(data);
-    });
+SocketIO.prototype.events = function(socket){
 };
 // authentication
 SocketIO.prototype.auth = function(data, next){
