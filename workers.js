@@ -14,7 +14,7 @@ var conf          = require('./conf'),
 var sessionMiddleware = session({
     store: redisStore,
     key: conf.secret,
-    secret: conf.secret,
+    secret: conf.secret
 });
 // config worker
 var Workers = function(config){
