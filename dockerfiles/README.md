@@ -3,9 +3,9 @@ Configuration to work with Docker
 
 For the development environment starts containers in the following order:
 
-mongodb-centos7
-redis-centos7
-nodejs-centos7
+1. mongodb-centos7
+2. redis-centos7
+3. nodejs-centos7
 
 In each container docker are instructions to make the system run.
 
