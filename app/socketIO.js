@@ -25,6 +25,9 @@ SocketIO.prototype.run = function(){
 };
 // on connect
 SocketIO.prototype.events = function(socket){
+    //socket.on('other:event', function(data){
+    //    console.log(data);
+    //});
 };
 // authentication
 SocketIO.prototype.auth = function(data, next){
