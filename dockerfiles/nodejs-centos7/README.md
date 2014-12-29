@@ -5,8 +5,6 @@ Based on CentOS-Dockerfiles
 
 This repo contains a recipe for making Docker container for nodejs on CentOS7.
 
-Note: Change password of user in start.sh
-
 Setup
 -----
 
