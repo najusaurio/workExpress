@@ -1,13 +1,9 @@
 #!/bin/bash
 
-__create_user() {
-# Create a user to SSH into as.
-useradd user
-# Change pasword
-SSH_USERPASS=newpass
-echo -e "$SSH_USERPASS\n$SSH_USERPASS" | (passwd --stdin user)
-echo ssh user password: $SSH_USERPASS
+__run_supervisor() {
+echo "Running the run_supervisor function."
+supervisord -n
 }
 
 # Call all functions
-__create_user
+__run_supervisor
