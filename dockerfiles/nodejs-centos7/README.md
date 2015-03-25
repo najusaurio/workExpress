@@ -10,41 +10,24 @@ Note: Change password of user in start.sh
 Setup
 -----
 
-Check your Docker version
-
-    $ sudo docker version
-
 Perform the build the container:
 
     $ sudo docker build --rm -t <username>/nodejs .
 
-Check the image out.
+Install nodejs requirements:
 
-    $ sudo docker images
+    $ sudo docker run --rm --privileged=true -v /opt/workExpress/:/opt/workExpress/ <username>/nodejs /npm_install.sh
+
 
 Launching NodeJS
 ----------------
 
-To run in background:
+To run container:
 
-    $ sudo docker run -itd -p 8080:8080 -p 8081:8081 -v /opt/workExpress:/opt/workExpress --link mongodb:mongodb --link redis:redis --name wenodejs <username>/nodejs /node_debugger.sh
+    $ sudo docker run --name workexpress -d --privileged=true -v /opt/workExpress/:/opt/workExpress/ --link workexpress-mongodb:mongodb --link workexpress-redis:redis <username>/nodejs
 
-To work whit the nodejs container:
+To work in development mode with container:
 
-    $ sudo docker run -it -p 8080:8080 -p 8081:8081 -v /opt/workExpress:/opt/workExpress --link mongodb:mongodb --link redis:redis --name wenodejs <username>/nodejs /bin/bash
+    $ sudo docker run --name dev-workexpress -d -p 8080:8080 -p 8081:8081 --privileged=true -v /opt/workExpress/:/opt/workExpress/ --link workexpress-mongodb:mongodb --link workexpress-redis:redis <username>/nodejs /bin/bash /node_debugger.sh
 
-Using your NodeJS container
----------------------------
 
-    $ curl http://localhost:8080
-    
-### Commands to work whit the nodejs container ###
-Star nodejs in debgger mode:
-
-    # forever start /usr/local/bin/node-inspector --web-port=8081
-    # cd /opt/workExpress/
-    # supervisor --debug workers.js
-
-Stop forever node inspector:
-
-    # forever stop 0
