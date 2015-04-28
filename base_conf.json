@@ -1,0 +1,15 @@
+{
+    "secret":"workExpress is awesome",
+    "serverPort": 8080,
+    "mongoDB" : {
+        "host": "mongodb",
+        "name": "workExpress"
+    },
+    "redis": {
+        "host": "redis",
+        "port": 6379
+    },
+    "tmpKey": {
+        "secret": "93u46dQR43VGd34e"
+    }
+}
