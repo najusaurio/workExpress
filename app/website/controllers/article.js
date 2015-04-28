@@ -1,5 +1,6 @@
 // dependencies
-var ArticleView  = require('../views/article'),
+var conf         = require('../../../conf'),
+    ArticleView  = require('../views/article'),
     ArticleModel = require('../models/article');
 // module
 var Article = function(conf){
@@ -12,9 +13,13 @@ var Article = function(conf){
 };
 // post save
 Article.prototype.post_save = function(req, res, next){
-    this.model.save(req.body,function(doc){
-        res.redirect('/article/see/'+doc.slug);
-    });
+    if (req.body.key != conf.tmpKey.secret){
+        res.redirect('/article/list/');
+    } else {
+        this.model.save(req.body,function(doc){
+            res.redirect('/article/see/'+doc.slug);
+        });
+    }
 };
 // post remove
 Article.prototype.post_remove = function(req, res, next){
