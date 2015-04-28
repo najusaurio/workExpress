@@ -46,14 +46,16 @@ Home.prototype.post_save = function(req,res,next){
 // get see
 Home.prototype.get_see = function(req,res,next){
     var self = this;
-    this.model.get(function(doc){
-        if(doc.length === 0){
-            res.redirect('/home/edit/');
-        } else {
-            object = { pagename: 'Home', userName: 'DiegoUG', docs:doc};
-            self.view.see(res,object);
-        }
-    });
+    var object = { pagename: 'Home', userName: 'DiegoUG'};
+    self.view.see(res,object);
+    //this.model.get(function(doc){
+    //    if(doc.length === 0){
+    //        res.redirect('/home/edit/');
+    //    } else {
+    //        object = { pagename: 'Home', userName: 'DiegoUG', docs:doc};
+    //        self.view.see(res,object);
+    //    }
+    //});
 };
 // get edit
 Home.prototype.get_edit = function(req,res,next){
