@@ -44,7 +44,7 @@ Home.prototype.post_save = function(req,res,next){
     });
 };
 // get see
-Home.prototype.get_see = function(req,res,next){
+Home.prototype.get_root = function(req,res,next){
     var self = this;
     var object = { pagename: 'Home', userName: 'DiegoUG'};
     self.view.see(res,object);
