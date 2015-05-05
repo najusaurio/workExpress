@@ -23,15 +23,14 @@ Article.prototype.post_save = function(req, res, next){
 };
 // post remove
 Article.prototype.post_remove = function(req, res, next){
-    this.model.remove(req.body,function(doc){
+    this.model.remove(req.body,function(){
         res.redirect('/article/list/');
     });
 };
 // get add
 Article.prototype.get_add = function(req, res, next){
-    var self = this;
     object = { pagename: 'Article add', userName: 'DiegoUG', csrfToken: req.csrfToken()};
-    self.view.add(res,object);
+    this.view.add(res,object);
 };
 // get see
 Article.prototype.get_see_data = function(req, res, next){
@@ -45,7 +44,7 @@ Article.prototype.get_see_data = function(req, res, next){
 // get edit
 Article.prototype.get_edit_data = function(req, res, next){
     var self = this;
-    object = { pagename: 'Article edit', userName: 'DiegoUG'};
+    object = { pagename: 'Article edit', userName: 'DiegoUG',  csrfToken: req.csrfToken()};
     this.model.get({slug:req.params.data},function(doc){
         object.article = doc[0];
         self.view.add(res,object);
