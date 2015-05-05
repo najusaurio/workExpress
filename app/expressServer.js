@@ -3,6 +3,7 @@ var env          = process.env.NODE_ENV || 'production',
     conf         = require('../conf'),
     express      = require('express'),
     swig         = require('swig'),
+    plugins      = require('./plugins/admin'),
     middlewares  = require('./middlewares/admin'),
     router       = require('./website/router');
 // module
@@ -51,6 +52,7 @@ ExpressServer.prototype.routers = function(controller,resource,method,url){
     this.expressServer[method](url, function (req,res,next){
         // encapsulate closure and run controller
         var conf = {
+            'plugins':plugins,
             'resource':resource,
             'req':req,
             'res':res,
