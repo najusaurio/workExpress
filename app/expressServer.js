@@ -34,20 +34,20 @@ var ExpressServer = function(config){
     // dinamic router to controllers
     for (var controller in router){
         for (var resource in router[controller].prototype){
-            // variables
             var method      = resource.split('_')[0];
             var environment = resource.split('_')[1];
             var data = resource.split('_')[2];
-            data     = (method == 'get' && data !== undefined) ? ':data' : '';
-            var url  = ((controller == 'home' && environment == 'see') ? '/' :
-                        '/' + controller + '/' + environment + '/' + data);
+            data     = (method == 'get' && data == 'data') ? ':data' : '';
+            var url  = ((controller == 'home' && environment == 'root') ? '/' :
+                       environment == 'root' ? '/' + controller + '/' :
+                       '/' + controller + '/' + environment + '/' + data);
             // constructor of urls
-            this.routers(controller,resource,method,url);
+            this.routers(plugins,controller,resource,method,url);
         }
     }
 };
 // constructor of urls
-ExpressServer.prototype.routers = function(controller,resource,method,url){
+ExpressServer.prototype.routers = function(plugins,controller,resource,method,url){
     console.log(url);
     this.expressServer[method](url, function (req,res,next){
         // encapsulate closure and run controller
