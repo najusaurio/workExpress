@@ -11,5 +11,12 @@
     },
     "tmpKey": {
         "secret": "93u46dQR43VGd34e"
+    },
+    "plugin":{
+        "nodemailer":{
+            "service": "Gmail",
+            "user": "gmail.user@gmail.com",
+            "pass": "userpass"
+        }
     }
 }
