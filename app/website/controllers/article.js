@@ -52,6 +52,7 @@ Article.prototype.get_edit_data = function(req, res, next){
 };
 // get list
 Article.prototype.get_list = function(req, res, next){
+    //this.conf.plugins.nodemailer.sendMail();
     var self = this;
     object = { pagename: 'Article list', userName: 'DiegoUG'};
     this.model.get({},function(docs){
