@@ -1,6 +1,5 @@
 // dependencies
 var modelArticle = require('./schema/article');
-var mongoose = require('mongoose');
 // module
 var Article = function(config){
     config     = config || {};
