@@ -1,5 +1,4 @@
 /*!
- * Bootstrap v3.3.2 (http://getbootstrap.com)
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -1120,8 +1119,6 @@ figure {
 }
 img {
   vertical-align: middle;
-  height:45px;
-
 }
 .img-responsive,
 .thumbnail > img,
@@ -1133,7 +1130,6 @@ img {
   height: auto;
 }
 .img-rounded {
-  border-radius: 10px;
   border-radius: 6px;
 }
 .img-thumbnail {
@@ -2583,7 +2579,6 @@ output {
 .form-control[disabled],
 .form-control[readonly],
 fieldset[disabled] .form-control {
-  cursor: not-allowed;
   background-color: #eee;
   opacity: 1;
 }
@@ -3392,11 +3387,9 @@ input[type="button"].btn-block {
 }
 .collapse {
   display: none;
-  visibility: hidden;
 }
 .collapse.in {
   display: block;
-  visibility: visible;
 }
 tr.collapse.in {
   display: table-row;
@@ -3424,7 +3417,6 @@ tbody.collapse.in {
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top: 4px solid;
   border-top: 4px dashed;
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
@@ -3996,7 +3988,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .nav-pills > li {
-  float: right;
   float: left;
 }
 .nav-pills > li > a {
@@ -4004,21 +3995,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-pills > li + li {
   margin-left: 2px;
-  font-size: 15px;
 }
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #fff;
   background-color: #337ab7;
-  font-size: 15px;
 }
 .nav-stacked > li {
   float: none;
 }
 .nav-stacked > li + li {
   margin-top: 2px;
-  margin-left:0
   margin-left: 0;
 }
 .nav-justified {
@@ -4069,11 +4057,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .tab-content > .tab-pane {
   display: none;
-  visibility: hidden;
 }
 .tab-content > .active {
   display: block;
-  visibility: visible;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -4120,7 +4106,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     height: auto !important;
     padding-bottom: 0;
     overflow: visible !important;
-    visibility: visible !important;
   }
   .navbar-collapse.in {
     overflow-y: visible;
@@ -4388,10 +4373,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: 14px;
 }
 .navbar-text {
-  margin-top: 25px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  text-color: #337ab7;
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -4849,7 +4830,6 @@ a.label:focus {
   position: relative;
   top: -1px;
 }
-.btn-xs .badge {
 .btn-xs .badge,
 .btn-group-xs > .btn .badge {
   top: 0;
@@ -5683,11 +5663,9 @@ a.list-group-item-danger.active:focus {
   height: 100%;
   border: 0;
 }
-.embed-responsive.embed-responsive-16by9 {
 .embed-responsive-16by9 {
   padding-bottom: 56.25%;
 }
-.embed-responsive.embed-responsive-4by3 {
 .embed-responsive-4by3 {
   padding-bottom: 75%;
 }
@@ -5747,7 +5725,6 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
   z-index: 1050;
   display: none;
   overflow: hidden;
@@ -5791,7 +5768,6 @@ button.close {
           box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
 }
 .modal-backdrop {
-  position: absolute;
   position: fixed;
   top: 0;
   right: 0;
