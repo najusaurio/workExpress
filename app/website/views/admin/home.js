@@ -4,7 +4,7 @@ var Admin = function(conf){
 };
 // render see
 Admin.prototype.admin = function(res,object){
-    res.render('admin',object);
+    res.render('base_admin',object);
 };
 // export module
 module.exports = Admin;
