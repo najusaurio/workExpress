@@ -1,16 +1,19 @@
 // dependencies
-var HomeView     = require('../views/admin');
+var HomeView = require('../../views/admin/home');
 // module
 var Admin = function(conf){
     this.conf     = conf || {};
+    this.express  = conf.express;
     this.view     = new HomeView();
-    this.response = function(){
-        this[this.conf.resource](this.conf.req,this.conf.res,this.conf.next);
-    };
+    this.routes();
 };
-// get see
-Admin.prototype.get_see = function(req,res,next){
-    this.view.admin(res,{});
+// routes
+Admin.prototype.routes = function(){
+    var self = this;
+    // root
+    this.express.get('/admin/',function(req,res){
+        self.view.admin(res,{});
+    });
 };
 // export module
 module.exports = Admin;
