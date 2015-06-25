@@ -8,7 +8,7 @@ Home.prototype.see = function(res,object){
 };
 // render edit
 Home.prototype.edit = function(res, object){
-    res.render('admin', object);
+    res.render('proceso', object);
 };
 // export module
 module.exports = Home;

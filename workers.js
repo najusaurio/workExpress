@@ -1,5 +1,5 @@
 // dependencies
-var conf          = require('./conf'),
+var conf          = require('./conf.json'),
     mongoose      = require('mongoose'),
     redis         = require('redis'),
     session       = require('express-session'),
