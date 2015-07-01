@@ -1,6 +1,9 @@
 module.exports = {
-    article : require('./controllers/article'),
-    home    : require('./controllers/home'),
-    admin   : require('./controllers/admin'),
-    category: require('./controllers/category')
+    // admin
+    admin     : require('./controllers/admin/home'),
+    adminUser : require('./controllers/admin/user'),
+    // website
+    home     : require('./controllers/home'),
+    article  : require('./controllers/article'),
+    category : require('./controllers/category')
 };

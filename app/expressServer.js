@@ -22,7 +22,7 @@ var ExpressServer = function(config){
     // config swig as default template engine
     this.expressServer.engine('html', swig.renderFile);
     this.expressServer.set('view engine', 'html');
-    this.expressServer.set('views', __dirname + '/website/views/templates');
+    this.expressServer.set('views', [__dirname + '/website/views/templates',__dirname + '/website/views/admin/templates']);
     swig.setDefaults({ varControls: ['[[', ']]'] });
     // development enviroment
     if (env == 'development') {
@@ -33,34 +33,8 @@ var ExpressServer = function(config){
     }
     // dinamic router to controllers
     for (var controller in router){
-        for (var resource in router[controller].prototype){
-            var method      = resource.split('_')[0];
-            var environment = resource.split('_')[1];
-            var data = resource.split('_')[2];
-            data     = (method == 'get' && data == 'data') ? ':data' : '';
-            var url  = ((controller == 'home' && environment == 'root') ? '/' :
-                       environment == 'root' ? '/' + controller + '/' :
-                       '/' + controller + '/' + environment + '/' + data);
-            // constructor of urls
-            this.routers(plugins,controller,resource,method,url);
-        }
+        new router[controller]({express:this.expressServer});
     }
-};
-// constructor of urls
-ExpressServer.prototype.routers = function(plugins,controller,resource,method,url){
-    console.log(url);
-    this.expressServer[method](url, function (req,res,next){
-        // encapsulate closure and run controller
-        var conf = {
-            'plugins':plugins,
-            'resource':resource,
-            'req':req,
-            'res':res,
-            'next':next
-        };
-        var Controller = new router[controller](conf);
-        Controller.response();
-    });
 };
 // export module
 module.exports = ExpressServer;
