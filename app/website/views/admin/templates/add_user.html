@@ -1,1 +1,145 @@
 {% extends 'base_admin.html' %}
+
+{% block head %}
+    {% parent %}
+{% endblock %}
+
+{% block general %}
+    {% parent %}
+
+    {% block nav-bar %}
+        {% parent %}
+
+        {% block container %}
+            <div id="page-wrapper">
+                <div class="container-fluid">
+
+                    {% block menu-bar %}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">
+                                    Usuarios
+                                    <button type="button" class="btn btn-lg btn-warning">Nuevo</button>
+                                </h1>
+                            </div>
+                        </div>
+                    {% endblock menu-bar %}
+
+                    {% block form %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-external-link-square"></i>
+                                        Creaci&oacute;n de Usuario
+                                    </div>
+                                    <div class="panel-body">
+                                        <h2><i class="fa fa-pencil-square teal"></i> REGISTRO</h2>
+                                        <hr>
+                                        <form action="#" role="form" id="form" novalidate="novalidate">
+                                            <div class="row">
+                                                <!--<div class="col-md-12">
+                                                    <div class="errorHandler alert alert-danger no-display">
+                                                        <i class="fa fa-times-sign"></i> Usted tiene algunos errores en el Formulario. Por Favor revise e intente de nuevo.
+                                                    </div>
+                                                    <div class="successHandler alert alert-success no-display">
+                                                        <i class="fa fa-ok"></i> Su validaci&oacute;n de formulario es un exito!!
+                                                    </div>
+                                                </div>-->
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            Primer Nombre: <span class="symbol required"></span>
+                                                        </label>
+                                                        <input type="text" placeholder="Inserta tu Primer Nombre"
+                                                               class="form-control" id="firstname" name="firstname"
+                                                               style="cursor: auto; background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            Segundo Nombre: <span class="symbol required"></span>
+                                                        </label>
+                                                        <input type="text" placeholder="Inserta tu Segundo Nombre"
+                                                               class="form-control" id="lastname" name="lastname">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            Username: <span class="symbol required"></span>
+                                                        </label>
+                                                        <input type="text" placeholder="Inserta un nombre de usuario"
+                                                               class="form-control" id="username" name="lastname">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            Correo Electronico:<span class="symbol required"></span>
+                                                        </label>
+                                                        <input type="email" placeholder="Correo Electronico" class="form-control"
+                                                               id="email" name="email">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            Contraseña: <span class="symbol required"></span>
+                                                        </label>
+                                                        <input type="password" class="form-control" name="password" id="password"
+                                                               style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            Confirme su contraseña: <span class="symbol required"></span>
+                                                        </label>
+                                                        <input type="password" class="form-control" id="password_again"
+                                                               name="password_again"
+                                                               style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                                                    </div>
+                                                    <div class="col-md-4 col-md-offset-6">
+                                                        <div class="col-xs-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label">
+                                                                    Estado: <span class="symbol required"></span>
+                                                                </label>
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                                                                           value="option1"> Activo
+                                                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                                                                           value="option2"> Inactivo
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">
+                                                                    Staff: <span class="symbol required"></span>
+                                                                </label>
+                                                                <label class="radio-inline">
+                                                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                                                                           value="option1"> On
+                                                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                                                                           value="option2"> Off
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <p>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button class="btn btn-yellow btn-block" type="submit">
+                                                            Registrar <i class="fa fa-arrow-circle-right"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock form %}
+                </div>
+            </div>
+        {% endblock container %}
+    {% endblock nav-bar %}
+{% endblock %}
