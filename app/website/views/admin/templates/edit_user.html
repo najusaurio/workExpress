@@ -1,10 +1,117 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends 'base_admin.html' %}
 
-</body>
-</html>
+{% block css %}
+<link href="/public/css/bootstrap.admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block page-head %}
+Usuarios
+{% endblock %}
+
+{% block page-content %}
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            Edici&oacute;n de Usuario
+        </div>
+        <div class="panel-body">
+            <form action="#" role="form" id="form" novalidate="novalidate">
+                <div class="row">
+                    <!--<div class="col-md-12">
+                        <div class="errorHandler alert alert-danger no-display">
+                            <i class="fa fa-times-sign"></i> Usted tiene algunos errores en el Formulario. Por Favor revise e intente de nuevo.
+                        </div>
+                        <div class="successHandler alert alert-success no-display">
+                            <i class="fa fa-ok"></i> Su validaci&oacute;n de formulario es un exito!!
+                        </div>
+                    </div>-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                Subir Imagen
+                            </label>
+
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="fileupload-new thumbnail"
+                                     style="width: 150px; height: 150px;"><img
+                                        src="assets/images/avatar-1-xl.jpg" alt="">
+                                </div>
+                                <div class="user-edit-image-buttons">
+                                            <span class="btn btn-light-grey btn-file"><span
+                                                    class="fileupload-new"><i class="fa fa-picture"></i></span><span
+                                                    class="fileupload-exists"><i
+                                                    class="fa fa-picture"></i> </span>
+                                                <input type="file">
+                                            </span>
+                                    <a href="#" class="btn fileupload-exists btn-light-grey"
+                                       data-dismiss="fileupload">
+                                        <i class="fa fa-times"></i> Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Primer Nombre: <span class="symbol required"></span>
+                            </label>
+                            <input type="text" placeholder="Diego" class="form-control" id="firstname"
+                                   name="firstname"
+                                   style="cursor: auto; background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat; <td>phone:</td>">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Segundo Nombre: <span class="symbol required"></span>
+                            </label>
+                            <input type="text" placeholder="Alfonzo" class="form-control" id="lastname"
+                                   name="lastname">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Username: <span class="symbol required"></span>
+                            </label>
+                            <input type="text" placeholder="Diegoug" class="form-control" id="username"
+                                   name="lastname">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Correo Electronico:<span class="symbol required"></span>
+                            </label>
+                            <input type="email" placeholder="Diego.uribe@gmail.com" class="form-control"
+                                   id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Contraseña: <span class="symbol required"></span>
+                            </label>
+                            <input type="password" class="form-control" name="password" id="password"
+                                   style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Confirme su contraseña: <span class="symbol required"></span>
+                            </label>
+                            <input type="password" class="form-control" id="password_again"
+                                   name="password_again"
+                                   style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p>
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-yellow btn-block" type="submit">
+                                Editar <i class="fa fa-arrow-circle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
