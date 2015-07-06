@@ -1,10 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+{% extends 'base_admin.html' %}
 
-</body>
-</html>
+{% block css %}
+<link href="/public/css/bootstrap.admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block page-head %}
+Usuarios
+{% endblock %}
+
+{% block page-content %}
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i>
+            Creaci&oacute;n de Usuario
+        </div>
+        <div class="panel-body">
+            <h2><i class="fa fa-pencil-square teal"></i> REGISTRO</h2>
+            <hr>
+            <form action="#" role="form" id="form" novalidate="novalidate">
+                <div class="row">
+                    <!--<div class="col-md-12">
+                        <div class="errorHandler alert alert-danger no-display">
+                            <i class="fa fa-times-sign"></i> Usted tiene algunos errores en el Formulario. Por Favor revise e intente de nuevo.
+                        </div>
+                        <div class="successHandler alert alert-success no-display">
+                            <i class="fa fa-ok"></i> Su validaci&oacute;n de formulario es un exito!!
+                        </div>
+                    </div>-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>
+                                Subir Imagen
+                            </label>
+
+                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                <div class="fileupload-new thumbnail"
+                                     style="width: 150px; height: 150px;"><img
+                                        src="assets/images/avatar-1-xl.jpg" alt="">
+                                </div>
+                                <div class="user-edit-image-buttons">
+                                            <span class="btn btn-light-grey btn-file"><span
+                                                    class="fileupload-new"><i class="fa fa-picture"></i></span><span
+                                                    class="fileupload-exists"><i
+                                                    class="fa fa-picture"></i> </span>
+                                                <input type="file">
+                                            </span>
+                                    <a href="#" class="btn fileupload-exists btn-light-grey"
+                                       data-dismiss="fileupload">
+                                        <i class="fa fa-times"></i> Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Primer Nombre: <span class="symbol required"></span>
+                            </label>
+                            <input type="text" class="form-control" id="firstname" name="firstname"
+                                   style="cursor: auto; background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Segundo Nombre: <span class="symbol required"></span>
+                            </label>
+                            <input type="text" class="form-control" id="lastname" name="lastname">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Username: <span class="symbol required"></span>
+                            </label>
+                            <input type="text" class="form-control" id="username" name="lastname">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Correo Electronico:<span class="symbol required"></span>
+                            </label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Contraseña: <span class="symbol required"></span>
+                            </label>
+                            <input type="password" class="form-control" name="password" id="password"
+                                   style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">
+                                Confirme su contraseña: <span class="symbol required"></span>
+                            </label>
+                            <input type="password" class="form-control" id="password_again"
+                                   name="password_again"
+                                   style="cursor: auto; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACIUlEQVQ4EX2TOYhTURSG87IMihDsjGghBhFBmHFDHLWwSqcikk4RRKJgk0KL7C8bMpWpZtIqNkEUl1ZCgs0wOo0SxiLMDApWlgOPrH7/5b2QkYwX7jvn/uc//zl3edZ4PPbNGvF4fC4ajR5VrNvt/mo0Gr1ZPOtfgWw2e9Lv9+chX7cs64CS4Oxg3o9GI7tUKv0Q5o1dAiTfCgQCLwnOkfQOu+oSLyJ2A783HA7vIPLGxX0TgVwud4HKn0nc7Pf7N6vV6oZHkkX8FPG3uMfgXC0Wi2vCg/poUKGGcagQI3k7k8mcp5slcGswGDwpl8tfwGJg3xB6Dvey8vz6oH4C3iXcFYjbwiDeo1KafafkC3NjK7iL5ESFGQEUF7Sg+ifZdDp9GnMF/KGmfBdT2HCwZ7TwtrBPC7rQaav6Iv48rqZwg+F+p8hOMBj0IbxfMdMBrW5pAVGV/ztINByENkU0t5BIJEKRSOQ3Aj+Z57iFs1R5NK3EQS6HQqF1zmQdzpFWq3W42WwOTAf1er1PF2USFlC+qxMvFAr3HcexWX+QX6lUvsKpkTyPSEXJkw6MQ4S38Ljdbi8rmM/nY+CvgNcQqdH6U/xrYK9t244jZv6ByUOSiDdIfgBZ12U6dHEHu9TpdIr8F0OP692CtzaW/a6y3y0Wx5kbFHvGuXzkgf0xhKnPzA4UTyaTB8Ph8AvcHi3fnsrZ7Wore02YViqVOrRXXPhfqP8j6MYlawoAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!--<div class="form-group connected-group">
+                        <label class="control-label">
+                            Fecha de Creaci&oacute;n: <span class="symbol required"></span>
+                        </label>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <select name="dd" id="dd" class="form-control">
+                                    <option value="">DD</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select name="mm" id="mm" class="form-control">
+                                    <option value="">MM</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" placeholder="AAAA" id="aaaa" name="aaaa" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    </div>-->
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p>
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-yellow btn-block" type="submit">
+                                Crear <i class="fa fa-arrow-circle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
