@@ -22,14 +22,13 @@ var ExpressServer = function(config){
     // config swig as default template engine
     this.expressServer.engine('html', swig.renderFile);
     this.expressServer.set('view engine', 'html');
-    this.expressServer.set('views', [__dirname + '/website/views/templates',__dirname + '/website/views/admin/templates']);
-    swig.setDefaults({ varControls: ['[[', ']]'] });
+    this.expressServer.set('views', [__dirname + '/website/views/templates', __dirname + '/website/views/admin/templates']);
     // development enviroment
     if (env == 'development') {
         console.log('DEVELOPMENT');
         // disable Swig's cache and use Express's caching instead
         this.expressServer.set('view cache', false);
-        swig.setDefaults({ cache: false, varControls: ['[[', ']]'] });
+        swig.setDefaults({cache: false});
     }
     // dinamic router to controllers
     for (var controller in router){
