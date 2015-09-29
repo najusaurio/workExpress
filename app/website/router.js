@@ -1,9 +1,10 @@
 module.exports = {
     // admin
-    admin     : require('./controllers/admin/home'),
+    adminLogin : require('./controllers/admin/login'),
+    admin : require('./controllers/admin/home'),
     adminUser : require('./controllers/admin/user'),
+    adminArticle : require('./controllers/admin/article'),
     // website
-    home     : require('./controllers/home'),
-    article  : require('./controllers/article'),
-    category : require('./controllers/category')
+    home : require('./controllers/home'),
+    article : require('./controllers/article')
 };
