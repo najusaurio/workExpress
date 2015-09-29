@@ -5,19 +5,24 @@ var HomeView     = require('../views/home'),
 // module
 var Home = function(conf){
     this.conf         = conf || {};
-    this.express      = conf.express;
     this.view         = new HomeView();
     this.model        = new HomeModel();
     this.articleModel = new ArticleModel();
-    this.routes();
+    this.response = function(){
+        this[this.conf.resource](this.conf.req,this.conf.res,this.conf.next);
+    };
 };
-Home.prototype.routes = function(){
+// get see
+Home.prototype.getRoot = function(req,res,next){
     var self = this;
-    // get root
-    this.express.get('/',function(req,res){
-        var object = { pagename: 'Home', userName: 'DiegoUG'};
-        self.view.see(res,object);
-    });
+    var object = { pagename: 'Home', userName: 'DiegoUG'};
+    self.view.see(res,object);
+};
+// get edit
+Home.prototype.getEdit = function(req,res,next){
+    var self = this;
+    object = { pagename: 'Home' , userName: 'DiegoUG'};
+    self.view.edit(res,object);
 };
 // export module
 module.exports = Home;
