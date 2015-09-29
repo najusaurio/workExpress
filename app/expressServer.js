@@ -7,7 +7,7 @@ var env          = process.env.NODE_ENV || 'production',
     middlewares  = require('./middlewares/admin'),
     router       = require('./website/router');
 // module
-var ExpressServer = function(config){
+var ExpressServer = function (config) {
     config = config || {};
     // create a new express application
     this.expressServer = express();
