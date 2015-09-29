@@ -1,11 +1,15 @@
 // dependencies
-var env          = process.env.NODE_ENV || 'production',
-    conf         = require('../conf'),
-    express      = require('express'),
-    swig         = require('swig'),
-    plugins      = require('./plugins/admin'),
-    middlewares  = require('./middlewares/admin'),
-    router       = require('./website/router');
+var env = process.env.NODE_ENV || 'production',
+    conf = require('../conf'),
+    express = require('express'),
+    swig = require('swig'),
+    plugins = require('./plugins/admin'),
+    middlewares = require('./middlewares/admin'),
+    router = require('./website/router');
+
+var noAuth = function (req, res, next) { return next() },
+    auth = require('./middlewares/auth');
+
 // module
 var ExpressServer = function (config) {
     config = config || {};
