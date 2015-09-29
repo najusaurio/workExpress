@@ -12,8 +12,8 @@ var ExpressServer = function (config) {
     // create a new express application
     this.expressServer = express();
     // middleware's
-    for (var middleware in middlewares){
-        if (middleware == 'session'){
+    for (var middleware in middlewares) {
+        if (middleware == 'session') {
             this.expressServer.use(config.session);
         } else {
             this.expressServer.use(middlewares[middleware]);
