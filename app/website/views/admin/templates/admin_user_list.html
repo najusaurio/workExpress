@@ -1,0 +1,13 @@
+{% extends '../../templates/base.html' %}
+
+{% block content %}
+<div>
+    <a href="/admin/user/add/">add user</a>
+
+    <p>-----------------------------------</p>
+    {% for user in users %}
+        <a href="/admin/user/see/{{ user._id.toString() }}">UserName: {{ user.username }}</a>
+        <p>-----------------------------------</p>
+    {% endfor %}
+</div>
+{% endblock %}
