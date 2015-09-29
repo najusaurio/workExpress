@@ -3,8 +3,12 @@ var Admin = function(conf){
     this.conf = conf || {};
 };
 // render see
-Admin.prototype.admin = function(res,object){
-    res.render('add_user',object);
+Admin.prototype.add = function(res,object){
+    res.render('admin_user_add',object);
+};
+// render list
+Admin.prototype.list = function(res, object){
+    res.render('admin_user_list', object);
 };
 // export module
 module.exports = Admin;

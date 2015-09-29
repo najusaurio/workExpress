@@ -1,9 +1,13 @@
 <!doctype html>
 <html>
     <head>
+        <title>{{ title }}</title>
+        <link rel='stylesheet' href='/public/css/style.css' />
         <!--<script src="http://127.0.0.1:3000/socket.io/socket.io.js"></script>-->
     </head>
     <body>
+        {% include "../includes/main_menu.html" %}
+        {% include "../includes/messages.html" %}
         {% block content %}{% endblock %}
     </body>
 </html>

@@ -1,20 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>[[ menu.menu ]]</h1>
-<div>
-    <p>[[ pagename|title ]]</p>
-    <p>[[ userName ]]</p>
-
-    <p>-----------------------------------</p>
-    <p>Title: [[ article.title ]]</p>
-    <p>Content: [[ article.content ]]</p>
-    <p>Description: [[ article.description ]]</p>
-
-    <form action="/article/remove/" method="post">
-        <input type="hidden" name="_csrf" value="[[csrfToken]]">
-        <input type="hidden" name="slug" value="[[ article.slug ]]">
-        <input type="submit" value="Remove">
-    </form>
-</div>
+    <div>
+        Title: <p>{{ article.title }}</p><br>
+        Content: <p>{{ article.content }}</p><br>
+    </div>
 {% endblock %}

@@ -6,9 +6,5 @@ var Home = function(conf){
 Home.prototype.see = function(res,object){
     res.render('home_see',object);
 };
-// render edit
-Home.prototype.edit = function(res, object){
-    res.render('home_edit', object);
-};
 // export module
 module.exports = Home;

@@ -1,10 +1,12 @@
-{% extends 'base.html' %}
+{% extends '../../templates/base.html' %}
 
 {% block content %}
 <div>
+    <a href="/admin/article/add/">add article</a>
+
     <p>-----------------------------------</p>
     {% for article in articles %}
-        <a href="/article/see/{{ article.slug }}">Title: {{ article.title }}</a>
+        <a href="/admin/article/edit/{{ article.slug }}">Title: {{ article.title }}</a>
         <p>Description: {{ article.description }}</p>
         <p>-----------------------------------</p>
     {% endfor %}
