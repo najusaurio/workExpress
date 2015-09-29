@@ -31,9 +31,37 @@ var ExpressServer = function (config) {
         swig.setDefaults({cache: false});
     }
     // dinamic router to controllers
-    for (var controller in router){
-        new router[controller]({express:this.expressServer});
+    for (var controller in router) {
+        for (var resource in router[controller].prototype) {
+            var urlResource = resource.replace(/([a-z\d])([A-Z])/g, '$1' + '-' + '$2').toLowerCase(),
+                urlController = controller.replace(/([a-z\d])([A-Z])/g, '$1' + '/' + '$2').toLowerCase(),
+                method = urlResource.split('-')[0],
+                environment = urlResource.split('-')[1],
+                data = (method == 'get' && urlResource.split('-')[2] == 'data') ? ':data' : '';
+            var url = ((urlController == 'home' && environment == 'root') ? '/' :
+                        environment == 'root' ? '/' + urlController + '/' :
+                        urlController == 'admin/login' ? '/' + environment + '/' :
+                        '/' + urlController + '/' + environment + '/' + data);
+            var needAuth = url.indexOf('admin') >= 0;
+            // constructor of urls
+            this.routers(plugins, controller, resource, method, url, needAuth);
+        }
     }
+};
+// constructor of urls
+ExpressServer.prototype.routers = function (plugins, controller, resource, method, url, needAuth) {
+    console.log(method + ':' + url);
+    this.expressServer[method](url, needAuth? auth :noAuth, function (req, res, next) {
+        var conf = {
+            'plugins': plugins,
+            'resource': resource,
+            'req': req,
+            'res': res,
+            'next': next
+        };
+        var Controller = new router[controller](conf);
+        Controller.response();
+    });
 };
 // export module
 module.exports = ExpressServer;
