@@ -16,7 +16,7 @@ Article.prototype.save = function(data,callback){
 };
 // save data
 Article.prototype.remove = function(data,callback){
-    this.model.remove({slug:data.slug}).exec(function(err){
+    this.model.remove({_id:data._id}).exec(function(err){
         callback();
     });
 };
