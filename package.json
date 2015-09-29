@@ -1,6 +1,10 @@
 {
   "name": "workExpress",
   "version": "0.0.1",
+  "preferGlobal": true,
+  "bin": {
+    "workexpress_create_superuser": "./scripts/superuser.js"
+  },
   "dependencies": {
     "body-parser": "^1.11.0",
     "connect": "^3.3.4",
