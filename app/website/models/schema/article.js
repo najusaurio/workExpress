@@ -11,8 +11,8 @@ var articleSchema = new mongoose.Schema({
     imageurl    : String,
     tags        : String,
     published   : Date,
-    created     : { type: Date, 'default': Date.now },
-    author      : { type: Schema.ObjectId, ref:'User' },
+    created     : { type: Date, 'default': Date.now, required: true },
+    author      : { type: Schema.ObjectId, ref:'User', required: true },
     hits        : Number,
     record      : { type: Schema.ObjectId, ref:'ArticleChange' }
 });
