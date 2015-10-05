@@ -13,6 +13,7 @@ var Article = function(conf){
 };
 // post save
 Article.prototype.postSave = function(req, res, next){
+    req.body.author = req.body.author ? req.body.author : req.session.sessionUser._id;
     this.model.save(req.body,function(){
         res.redirect('/admin/article/edit/'+req.body.slug);
     });
