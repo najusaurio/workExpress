@@ -2,7 +2,8 @@
 
 {% block content %}
     <div>
-        Title: <p>{{ article.title }}</p><br>
-        Content: <p>{{ article.content }}</p><br>
+        Author:<p>{{ article.author.username }}</p>
+        Title:<p>{{ article.title }}</p>
+        Content: <p>{{ article.content }}</p>
     </div>
 {% endblock %}
