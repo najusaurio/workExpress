@@ -23,7 +23,7 @@ Article.prototype.remove = function(data,callback){
 };
 // get data
 Article.prototype.get = function(query,callback){
-    this.model.find(query).sort('-date').exec(function(err,docs){
+    this.model.find(query).populate('author').sort('-date').exec(function(err,docs){
         callback(docs);
     });
 };
