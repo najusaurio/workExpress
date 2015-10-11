@@ -1,23 +1,98 @@
-{% extends '../../templates/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+    <link href="/public/css/bootstrap.css" rel="stylesheet">
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/bootstrap.admin.css" rel="stylesheet">
+    <!--<link href="/public/css/style.min.css" rel="stylesheet">-->
+    <link href="/public/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <title>{{ title }}</title>
 
-    <h1>{{ title }}</h1>
-    <p>Fill in the form below to sign in!</p>
+</head>
 
-    <form action='/login/' method='post'>
-        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+<body>
 
-        <p>
-            <input type='text' name='username' placeholder='Username'/>
-        </p>
+    {% include "../../includes/messages.html" %}
 
-        <p>
-            <input type='password' name='password' placeholder='Password'/>
-        </p>
+    <div id="wrapper" style="padding-left: 1px;">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="font-size: 26px;"> Login</a>
+            </div>
+        </nav>
 
-        <p>
-            <input type='submit' value='Login'/>
-        </p>
-    </form>
-{% endblock %}
+        <div id="page-wrapper" style="height: 1000px; padding-left: 5px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="container">
+                        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                            <div class="panel panel-info" style="background-color: #505050; width: 605px;">
+                                <div class="panel-heading" style="background-color: #eaeaea;">
+                                    <div class="form-header" style="padding-left: 240px;">
+                                        <img src="/public/images/template/User-icon.png" alt="portfolio item" style="width: 100px;">
+                                    </div>
+                                </div>
+
+                                <div style="padding-top:30px" class="panel-body" >
+
+                                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                                    <p style="font-size: 18px; color: #fff; padding-left: 150px;">Fill in the form below to sign in!</p>
+                                    <!--Login Form-->
+                                    <form  action='/login/' id="loginform" class="form-horizontal" role="form" method="post">
+                                        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+                                        <div style="margin-bottom: 25px; padding-left: 50px;" class="input-group">
+                                            <input type="text" class="form-control" name="username" placeholder='username' style="background-color: #fff; border: none; width: 480px; height: 50px; font-size: 18px; color: #404040;">
+                                        </div>
+
+                                        <div style="margin-bottom: 25px; padding-left: 50px;" class="input-group">
+                                            <input id="login-password" type="password" class="form-control" name="password" placeholder="Password" style="background-color: #fff; border: none; width: 480px; height: 50px; font-size: 18px; color: #404040;">
+                                        </div>
+
+                                        <div style="margin-top:10px; padding-left: 50px;" class="form-group">
+                                            <!-- Button -->
+                                            <div class="col-sm-12 controls">
+                                                <input id="btn-login" type='submit' value='Login' class="btn btn-success" style="background-color: #FF8000; border: none; width: 480px; height: 50px; font-size: 18px;"/>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <div class="panel-body" style="padding-left: 2px; width: 600px; height: 65px;">
+                                    <div class="form-footer" style="background-color: #404040; height: 50px; padding-top: 15px; padding-left: 50px; width: 600px;">
+                                        <div class="row">
+                                            <div class="col-xs-7">
+                                                <i class="fa fa-unlock-alt" style="color: #fff;"></i>
+                                                <a href="#" id="forgot_from_1">Forgot password?</a>
+                                            </div>
+                                            <div class="col-xs-5">
+                                                <i class="fa fa-check" style="color: #fff;"></i>
+                                                <a href="#" id="signup_from_1">Sign Up</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="/public/css/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
+    <script>
+      $(document).ready(function() {
+          $("a.dropdown-toggle").click(function(ev) {
+              $("a.dropdown-toggle").dropdown("toggle");
+              return false;
+          });
+          $("ul.dropdown-menu a").click(function(ev) {
+              $("a.dropdown-toggle").dropdown("toggle");
+              return false;
+          });
+      });
+    </script>
+</body>
+</html>
