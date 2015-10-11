@@ -23,6 +23,9 @@ Login.prototype.postLogin = function (req, res, next) {
                 if (hash == user.password) {
                     req.session.uid = user._id;
                     res.redirect('/admin/');
+                } else {
+                    res.setMessage("Password to user " + req.body.username + " not match");
+                    res.redirect('back');
                 }
             });
         } else {
