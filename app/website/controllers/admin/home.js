@@ -10,7 +10,8 @@ var Admin = function(conf){
 };
 // get see
 Admin.prototype.getRoot = function(req,res,next){
-    this.view.admin(res,{});
+    object = { title: 'admin home'};
+    this.view.admin(res,object);
 };
 // export module
 module.exports = Admin;
