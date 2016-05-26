@@ -27,7 +27,16 @@ Article.prototype.postRemove = function(req, res, next){
 // get add
 Article.prototype.getAdd = function(req, res, next){
     object = { pagename: 'Article add', userName: 'DiegoUG', csrfToken: req.csrfToken()};
-    this.view.AddEdit(res,object);
+    this.view.add(res,object);
+};
+// get see
+Article.prototype.getSeeData = function(req, res, next){
+    var self = this;
+    object = { pagename: 'Article add', userName: 'DiegoUG',  csrfToken: req.csrfToken()};
+    this.model.get({slug:req.params.data},function(doc){
+        object.article = doc[0];
+        self.view.see(res,object);
+    });
 };
 // get edit
 Article.prototype.getEditData = function(req, res, next){
@@ -35,7 +44,7 @@ Article.prototype.getEditData = function(req, res, next){
     object = { pagename: 'Article edit', userName: 'DiegoUG',  csrfToken: req.csrfToken()};
     this.model.get({slug:req.params.data},function(doc){
         object.article = doc[0];
-        self.view.AddEdit(res,object);
+        self.view.add(res,object);
     });
 };
 // get list
