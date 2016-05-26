@@ -7,10 +7,6 @@ var env = process.env.NODE_ENV || 'production',
     middlewares = require('./middlewares/admin'),
     router = require('./website/router');
 
-var multer = require('multer'),
-    path = require('path');
-var upload = multer({ dest: path.join(__dirname, '../static/uploads/') });
-
 var noAuth = function (req, res, next) { return next() },
     auth = require('./middlewares/auth');
 
@@ -59,7 +55,7 @@ var ExpressServer = function (config) {
 // constructor of urls
 ExpressServer.prototype.routers = function (plugins, controller, resource, method, url, needAuth) {
     console.log(method + ':' + url);
-    var requestMiddleware = [ needAuth? auth :noAuth, upload.single('avatar') ];
+    var requestMiddleware = needAuth? auth :noAuth;
     this.expressServer[method](url, requestMiddleware, function (req, res, next) {
         var conf = {
             'plugins': plugins,
