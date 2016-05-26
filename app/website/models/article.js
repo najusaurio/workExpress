@@ -8,8 +8,7 @@ var Article = function(config){
 // save data
 Article.prototype.save = function(data,callback){
     this.model.findOneAndUpdate({
-        title:data.title,
-        slug:data.slug,
+        _id:data.id,
         author: data.author
     },data,{upsert:true}).exec(function(err,doc){
         callback(doc);

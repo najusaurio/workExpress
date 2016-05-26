@@ -4,6 +4,7 @@
     <div>
         <form action="/admin/article/save/" method="post">
             <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <input type="hidden" name="id" value="{{ article._id.toString() }}">
             <input type="checkbox" name="status" value="true" {% if article.status %}checked{% endif %}>Status<br>
             Title: <input type="text" name="title" value="{{ article.title }}"><br>
             Slug: <input type="text" name="slug" value="{{ article.slug }}"><br>

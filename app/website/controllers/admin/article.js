@@ -14,8 +14,8 @@ var Article = function(conf){
 // post save
 Article.prototype.postSave = function(req, res, next){
     req.body.author = req.body.author ? req.body.author : req.session.sessionUser._id;
-    this.model.save(req.body,function(){
-        res.redirect('/admin/article/edit/'+req.body.slug);
+    this.model.save(req.body,function(doc){
+        res.redirect('/admin/article/edit/'+doc.slug);
     });
 };
 // post remove
@@ -28,15 +28,6 @@ Article.prototype.postRemove = function(req, res, next){
 Article.prototype.getAdd = function(req, res, next){
     object = { pagename: 'Article add', userName: 'DiegoUG', csrfToken: req.csrfToken()};
     this.view.add(res,object);
-};
-// get see
-Article.prototype.getSeeData = function(req, res, next){
-    var self = this;
-    object = { pagename: 'Article add', userName: 'DiegoUG',  csrfToken: req.csrfToken()};
-    this.model.get({slug:req.params.data},function(doc){
-        object.article = doc[0];
-        self.view.see(res,object);
-    });
 };
 // get edit
 Article.prototype.getEditData = function(req, res, next){
