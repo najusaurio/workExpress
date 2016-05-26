@@ -14,6 +14,7 @@ var User = function(conf){
 };
 // post save
 User.prototype.postSave = function(req, res, next){
+    debugger;
     var self = this;
     var action = req.body.action;
     delete req.body.action;

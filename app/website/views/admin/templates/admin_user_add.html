@@ -7,7 +7,7 @@
 
     {% include "../../includes/messages.html" %}
 
-    <form action='/admin/user/save' method='post'>
+    <form action='/admin/user/save' method='post' enctype='multipart/form-data'>
         <input type="hidden" name="_id" value="{{ user._id.toString() }}">
         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
         <input type="hidden" name="action" value="{{ action }}">
@@ -20,6 +20,9 @@
             {% endif %}
         </p>
 
+        <p>
+            <input type='file' name='avatar'>
+        </p>
         <p>
             <input autocomplete="off" type='password' name='password' placeholder='Password'/>
         </p>

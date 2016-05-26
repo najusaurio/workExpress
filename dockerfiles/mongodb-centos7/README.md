@@ -27,4 +27,4 @@ reference the data volume)
     
 To run in background:
 
-    $ sudo docker run -d --name workexpress-mongodb --volumes-from=workexpress-mongodb-data <username>/mongodb mongod
+    $ sudo docker run -d --name workexpress-mongodb --volumes-from=workexpress-mongodb-data <username>/mongodb mongod --smallfiles
