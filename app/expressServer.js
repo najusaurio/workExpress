@@ -7,7 +7,7 @@ var env = process.env.NODE_ENV || 'production',
     middlewares = require('./middlewares/admin'),
     router = require('./website/router');
 
-var multer  = require('multer'),
+var multer = require('multer'),
     path = require('path');
 var upload = multer({ dest: path.join(__dirname, '../static/uploads/') });
 
